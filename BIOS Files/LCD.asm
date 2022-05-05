@@ -1,9 +1,12 @@
     org $00
-
+    call init_lcd
+    ld a,%01001000
+    call send_let
     nop
     nop
     nop
 ;Add sufficient delay
+init_lcd:
     ld a,%00110000
     call send_cmd
     nop
@@ -42,45 +45,19 @@
 
 
     nop
-    ld a,%00000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%01100001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
+    ld a,%00000110
+    call send_cmd
     
 
 
     nop
-    ld a,%00000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%11110001
-    out (0),a
-    ld a,%00000000
-    out (0),a
+    ld a,%00001111
+    call send_cmd
     
     nop
-    ld a,%01000011
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%10000011
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-
-    ld hl,%0110001101010011
-    call send_let
-    
+    ld a,%01001000
+    call send_cmd
+    ret
 
 inf_loop:
     nop
