@@ -1,60 +1,34 @@
     org $00
     call init_lcd
-    ld a,%01001000
-    call send_let
-    nop
-    nop
-    nop
+    ld a,%01000011
+    out (0),a
+    ld a,$00
+    out (0),a
+    ld a,%10000011
+    out (0),a
+    ;ld a,$48
+    ;call send_let
+    jp inf_loop
 ;Add sufficient delay
 init_lcd:
     ld a,%00110000
     call send_cmd
-    nop
     ld a,%00110000
     call send_cmd
-    nop
     ld a,%00110000
     call send_cmd
-
-    nop
     ld a,%00100001
     call send_cmd
-
-    nop
-
-
-
-    nop
     ld a,%00101000
     call send_cmd
-    
-    
-
-    nop
     ld a,%00001000
     call send_cmd
-    
-    
-    nop
     ld a,%00000001
     call send_cmd
-
-    
-    
-
-
-
-    nop
     ld a,%00000110
     call send_cmd
-    
-
-
-    nop
     ld a,%00001111
     call send_cmd
-    
-    nop
     ld a,%01001000
     call send_cmd
     ret
