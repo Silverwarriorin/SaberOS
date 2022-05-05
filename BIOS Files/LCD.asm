@@ -15,51 +15,28 @@
 
     nop
     ld a,%00100001
-    out (0),a
-    ld a,%00000000
-    out (0),a
+    call send_cmd
 
     nop
 
 
 
     nop
-    ld a,%00100001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%10000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
+    ld a,%00101000
+    call send_cmd
     
     
 
     nop
-    ld a,%00000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%10000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
+    ld a,%00001000
+    call send_cmd
     
     
     nop
     ld a,%00000001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
-    ld a,%00010001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    nop
+    call send_cmd
+
+    
     
 
 
