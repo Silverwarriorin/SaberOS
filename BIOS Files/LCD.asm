@@ -4,22 +4,14 @@
     nop
     nop
 ;Add sufficient delay
-    ld a,%00110001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-
+    ld a,%00110000
+    call send_cmd
     nop
-    ld a,%00110001
-    out (0),a
-    ld a,%00000000
-    out (0),a
-
+    ld a,%00110000
+    call send_cmd
     nop
-    ld a,%00110001
-    out (0),a
-    ld a,%00000000
-    out (0),a
+    ld a,%00110000
+    call send_cmd
 
     nop
     ld a,%00100001
@@ -116,34 +108,51 @@
 inf_loop:
     nop
     jp nz,inf_loop
-send_cmd: ld a,h
-    rrca
-    rrca
-    rrca
-    rrca
-    ld b,%00000001
-    or b
+send_cmd:   ld b,a 
+    set 0,a
+    res 1,a
+    res 2,a
+    res 3,a
     out (0),a
-    ld a,l
-    ld a,%00000000
+    ;delay
+    ld a,$00
     out (0),a
-    rrca
-    rrca
-    rrca
-    rrca 
-    ld b,%00000001
-    or b
+    ld a,b
+    rlc a
+    rlc a
+    rlc a
+    rlc a
+    set 0,a
+    res 1,a
+    res 2,a
+    res 3,a
     out (0),a
-    ld a,%00000000
+    ;delay
+    ld a,$00
+    out (0),a
+    ret
+send_let: ld b,a 
+    set 0,a
+    set 1,a
+    res 2,a
+    res 3,a
+    out (0),a
+    ;delay
+    ld a,$00
+    out (0),a
+    ld a,b
+    rlc a
+    rlc a
+    rlc a
+    rlc a
+    set 0,a
+    set 1,a
+    res 2,a
+    res 3,a
+    out (0),a
+    ;delay
+    ld a,$00
     out (0),a
     ret
 
 
-send_let: ld a,h
-    out (0),a
-    ld a,l
-    ld a,%00000000
-    out (0),a
-    ld a,%00000000
-    out (0),a
-    ret
